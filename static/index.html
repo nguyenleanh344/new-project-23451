@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BoreHole Records</title>
+  <meta name="description" content="Browse, filter, search and review borehole records.">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="app-header">
+    <h1>BoreHole Records</h1>
+    <p class="subtitle">
+      Mock record store loaded from <code>data/boreholes.csv</code>. Status changes live in memory only.
+    </p>
+  </header>
+
+  <main class="app-main">
+    <section class="badges" aria-label="Record counts">
+      <div class="badge">
+        <span class="badge-label">Total</span>
+        <span class="badge-value" data-testid="badge-total">–</span>
+      </div>
+      <div class="badge">
+        <span class="badge-label">Filtered</span>
+        <span class="badge-value" data-testid="badge-filtered">–</span>
+      </div>
+      <div class="badge badge-verified">
+        <span class="badge-label">Verified</span>
+        <span class="badge-value" data-testid="badge-verified">–</span>
+      </div>
+      <div class="badge badge-review">
+        <span class="badge-label">Review</span>
+        <span class="badge-value" data-testid="badge-review">–</span>
+      </div>
+      <div class="badge">
+        <span class="badge-label">Avg depth (m)</span>
+        <span class="badge-value" data-testid="badge-avg-depth">–</span>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Filter, sort and search">
+      <div class="control">
+        <label for="select-state">State</label>
+        <select id="select-state" data-testid="select-state">
+          <option value="all" selected>All</option>
+          <option value="Verified">Verified</option>
+          <option value="Review">Review</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="select-depth">Sort</label>
+        <select id="select-depth" data-testid="select-depth">
+          <option value="" selected>Default order</option>
+          <option value="highToLow">Depth: high → low</option>
+          <option value="lowToHigh">Depth: low → high</option>
+        </select>
+      </div>
+      <div class="control control-grow">
+        <label for="input-search">Search</label>
+        <input id="input-search" type="search" data-testid="input-search"
+               placeholder="Search record ID or operator…" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="control control-action">
+        <button type="button" class="btn" data-testid="btn-reload">Reload from CSV</button>
+      </div>
+    </section>
+
+    <p class="status" data-testid="status-message" role="status" aria-live="polite"></p>
+
+    <div class="table-wrap">
+      <table class="records" data-testid="table-records" aria-busy="false">
+        <caption class="visually-hidden">Borehole records matching the current filter</caption>
+        <thead>
+          <tr>
+            <th scope="col">Record</th>
+            <th scope="col">Date</th>
+            <th scope="col">Machine</th>
+            <th scope="col">Operator</th>
+            <th scope="col">Position</th>
+            <th scope="col" class="num">Depth</th>
+            <th scope="col">Plumb</th>
+            <th scope="col">State</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody data-testid="rows"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <dialog class="detail" data-testid="detail-panel" aria-labelledby="detail-title">
+    <div class="detail-header">
+      <h2 id="detail-title">Record <span class="mono" data-field="recordId"></span></h2>
+      <button type="button" class="btn btn-icon" data-testid="btn-close-detail" aria-label="Close detail panel">×</button>
+    </div>
+    <dl class="detail-grid">
+      <div class="detail-item"><dt>Record ID</dt><dd class="mono" data-field="recordId"></dd></div>
+      <div class="detail-item"><dt>State</dt><dd data-field="state"></dd></div>
+      <div class="detail-item"><dt>Machine</dt><dd data-field="machine"></dd></div>
+      <div class="detail-item"><dt>Operator</dt><dd data-field="operator"></dd></div>
+      <div class="detail-item"><dt>Position</dt><dd data-field="position"></dd></div>
+      <div class="detail-item"><dt>Depth</dt><dd data-field="depth"></dd></div>
+      <div class="detail-item"><dt>Plumb</dt><dd data-field="plumb"></dd></div>
+      <div class="detail-item"><dt>Date created</dt><dd data-field="dateCreated"></dd></div>
+      <div class="detail-item detail-item-wide"><dt>Last updated</dt><dd data-field="lastUpdated"></dd></div>
+    </dl>
+    <div class="detail-footer">
+      <p class="hint">Status changes are kept in memory until the next reload from CSV.</p>
+      <button type="button" class="btn btn-primary" data-testid="btn-toggle-state">Mark as Review</button>
+    </div>
+  </dialog>
+</body>
+</html>

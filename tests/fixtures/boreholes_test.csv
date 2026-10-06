@@ -1,0 +1,7 @@
+recordId,machine,operator,position,depth,plumb,state,dateCreated,lastUpdated
+GEO-2025-07-0417,TND-DD-0114,Jack Mercer,52.4042° N,3.42,0.04° verticality,Verified,2025-07-18,2025-07-18T00:00:00+00:00
+GEO-2025-07-0416,TND-DD-0114,Jack Mercer,52.4039° N,3.38,0.08° verticality,Verified,2025-07-18,
+GEO-2025-07-0415,TND-DD-0119,Lukas Weber,52.4071° N,3.44,0.06° verticality,Verified,2025-07-18,2025-07-18T00:00:00+00:00
+GEO-2025-07-0414,TND-DD-0119,Lukas Weber,52.4068° N,3.42,0.05° verticality,Review,2025-07-18,2025-07-18T00:00:00+00:00
+GEO-2025-07-0413,TND-DD-0121,Priya Natarajan,52.4055° N,4.05,0.11° verticality,Verified,2025-07-17,2025-07-17T00:00:00+00:00
+GEO-2025-07-0412,TND-DD-0121,Priya Natarajan,52.4053° N,2.92,0.09° verticality,Review,2025-07-17,2025-07-17T00:00:00+00:00
